@@ -80,12 +80,12 @@ class AppState {
 AppState appReducer(AppState state, dynamic action) {
   if (action is SearchAction) {
     return AppState(
-      items: state.items, // Keep existing items
+      items: state.items,
       isLoading: true,
       currentpage: state.currentpage,
       hasMore: state.hasMore,
-      themeMode: state.themeMode, // Keep current theme
-      language: state.language,   // Keep current language
+      themeMode: state.themeMode,
+      language: state.language, 
     );
   }
   if (action is triggerThemeAction) {
@@ -111,12 +111,12 @@ AppState appReducer(AppState state, dynamic action) {
   }
   if (action is LoadDataAction) {
     return AppState(
-      items: state.items, // Keep existing items
+      items: state.items, 
       isLoading: true,
       currentpage: state.currentpage,
       hasMore: state.hasMore,
-      themeMode: state.themeMode, // Keep current theme
-      language: state.language,   // Keep current language
+      themeMode: state.themeMode,
+      language: state.language,   
     );
   } else if (action is FetchNextPageAction) {
     return AppState(
@@ -124,8 +124,8 @@ AppState appReducer(AppState state, dynamic action) {
       isLoading: true,
       currentpage: state.currentpage,
       hasMore: state.hasMore,
-      themeMode: state.themeMode, // Fix here too
-      language: state.language,   // Fix here too
+      themeMode: state.themeMode, 
+      language: state.language,   
     );
   } else if (action is LoadDataSuccessAction) {
     return AppState(
@@ -133,8 +133,8 @@ AppState appReducer(AppState state, dynamic action) {
       isLoading: false,
       currentpage: state.currentpage + 1,
       hasMore: action.hasMore,
-      themeMode: state.themeMode, // Fix here too
-      language: state.language,   // Fix here too
+      themeMode: state.themeMode, 
+      language: state.language,   
     );
   } else if (action is LoadDataErrorAction) {
     return AppState(
@@ -143,8 +143,8 @@ AppState appReducer(AppState state, dynamic action) {
       error: action.error,
       currentpage: state.currentpage,
       hasMore: state.hasMore,
-      themeMode: state.themeMode, // Fix here too
-      language: state.language,   // Fix here too
+      themeMode: state.themeMode, 
+      language: state.language,   
     );
   }
   return state;
@@ -309,7 +309,7 @@ void main() async {
     print('Failed to load saved data: $e');
   }
 
-  // load saved settings
+  
   Map<String, dynamic> settings = {};
   try {
     settings = await loadSettings();
@@ -334,7 +334,7 @@ runApp(
         converter: (store) => store.state,
         builder: (context, state) {
           
-          // 1. Convert your string language to a Flutter Locale
+         
           Locale appLocale;
           switch (state.language) {
             case 'Hindi':
@@ -352,12 +352,9 @@ runApp(
             title: 'Project',
             theme: ThemeData.light(),
             darkTheme: ThemeData.dark(),
-            themeMode: state.themeMode, // Reacts to theme changes
-            locale: appLocale,          // Reacts to language changes
+            themeMode: state.themeMode,
+            locale: appLocale, 
             
-            // NOTE: To make translations actually work on screen, 
-            // you will also need to add localizationsDelegates and 
-            // supportedLocales here later!
             
             home: const AppShell(),
           );

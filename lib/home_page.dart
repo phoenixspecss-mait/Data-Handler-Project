@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
   late Store<AppState> _store;
   String _searchquery = '';
 
-  // 1. ADD THIS: A simple dictionary for your app's text
+  
   String _translate(String key, String language) {
     const translations = {
       'English': {
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
     super.dispose();
   }
 
-  // 2. FIX: Corrected the built-in Flutter observer method name
+  
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
       converter: (store) => store.state,
       builder: (context, state) {
         return Scaffold(
-          // 3. USE TRANSLATION: Update title
+          
           appBar: AppBar(title: Text(_translate('title', state.language))),
           body: Column(
             children: [
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
           child: Text('${_translate('error', state.language)} ${state.error}'));
     }
     if (state.items.isEmpty && !state.isLoading) {
-      // 6. USE TRANSLATION: Update empty state text
+      
       return Center(child: Text(_translate('no_chars', state.language)));
     }
     if (state.items.isEmpty && state.isLoading) {
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> with WidgetsBindingObserver {
             .toList();
 
     if (filteredItems.isEmpty) {
-      // 7. USE TRANSLATION: Update empty search text
+      
       return Center(
         child: Text(_translate('no_results', state.language)),
       );

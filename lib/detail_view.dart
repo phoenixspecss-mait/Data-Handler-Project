@@ -16,7 +16,7 @@ class DetailView extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           child: Column(
             children: [
-              // image with rounded top corners
+     
               ClipRRect(
                 borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                 child: Image.network(
@@ -32,7 +32,7 @@ class DetailView extends StatelessWidget {
                 ),
               ),
 
-              // info inside card
+             
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
